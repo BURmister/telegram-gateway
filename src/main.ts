@@ -20,6 +20,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   app.useGlobalGuards(new ApiKeyGuard(configService));
 
-  await app.listen(process.env.PORT ?? 8080);
+  const port = process.env.PORT || 4200;
+  await app.listen(port, '0.0.0.0');
 }
 bootstrap();
